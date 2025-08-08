@@ -34,8 +34,12 @@ thumbnail:{
 
 },
 tag:{
+ type:[String],
+ require:true
+},
+category:{
     type:mongoose.Schema.Types.ObjectId,
-    ref: 'Tag',
+    ref: 'Category',
 },
 studentsEnrolled: [{
     type: mongoose.Schema.Types.ObjectId,       
