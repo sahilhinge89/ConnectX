@@ -135,12 +135,16 @@ exports.getCourseDetail = async(req,res) =>{
 													path:'instructor',
 													populate:{
 														path: additionalDetails,
-													}
-												})		
+													},
+												}
+                                            )		
 												.populate('category')
 												.populate('ratingAndrewiews')
 												.populate({
 													path:"courseContent",
+                                                    populate:{
+                                                        path:"subSection"
+                                                    }
 												})
 												.exec();	
 			
