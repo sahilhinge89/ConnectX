@@ -46,3 +46,52 @@ exports.getAllCategory = async (req,res) =>{
         });
     }
 }
+
+exports.categoryPageDetails = async(res,res) =>{
+    try {
+        const {categaoryId} = req.body;
+
+        // Get course for the specified category
+        const selectedCategory = await Category.findById(categaoryId).populate("courses").exec();
+          
+        console.log(selectedCategory);
+
+        // Handle the case when the category is not found
+        
+        if(!selectedCategory){
+            console.log("Category not found");
+            return res.status(404).json({
+                success:false,
+                message:"No courses found for the selected category",
+            })
+        }
+        const selectedCourse = selectedCategory.courses;
+        
+        //Get courses for other categories
+        
+         	const categoriesExceptSelected = await Category.find({
+			_id: { $ne: categoryId },
+		}).populate("courses");
+		let differentCourses = [];
+		for (const category of categoriesExceptSelected) {
+			differentCourses.push(...category.courses);
+		}
+        const allCategories = await Category.find().populate("courses");
+		const allCourses = allCategories.flatMap((category) => category.courses);
+		const mostSellingCourses = allCourses
+			.sort((a, b) => b.sold - a.sold)
+			.slice(0, 10);
+
+		res.status(200).json({
+			selectedCourses: selectedCourses,
+			differentCourses: differentCourses,
+			mostSellingCourses: mostSellingCourses,
+		});
+    } catch (error) {
+        return res.status(500).json({
+			success: false,
+			message: "Internal server error",
+			error: error.message,
+		});
+    }
+}
