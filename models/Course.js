@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const { type } = require('os');
 const courseSchema = new mongoose.Schema({
+    instructor: {
+         type:mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required:true
+    },
    coruseName:{
     type:String,
     required:true
@@ -46,6 +51,13 @@ studentsEnrolled: [{
     ref: 'User',
     required: true  
 }],
-
+instructions:{
+    type:String,
+   
+},
+status:{
+      type:String,
+     enum:["Draft"," Published"],
+}
 });
 module.exports = mongoose.model('Course', courseSchema);
