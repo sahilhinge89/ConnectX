@@ -1,3 +1,4 @@
+
 const User = require('../models/User');
 const OTP = require('../models/OTP');
 const otpGenerator = require('otp-generator');
@@ -65,7 +66,7 @@ exports.singUp  = async(req,res) =>{
         })
     }
     // hash the password
-    const hahedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     // create a new user in database
     const profileDetails = {
         gender:null,
@@ -77,7 +78,7 @@ exports.singUp  = async(req,res) =>{
         firstName,
         lastName,
         email,
-        password: hahedPassword,
+        password: hashedPassword,
         accountType,
         contactNumber,
         additionalDetails: profileDetails,
