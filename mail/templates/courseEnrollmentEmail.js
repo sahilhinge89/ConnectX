@@ -47,7 +47,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
                 color: #000000;
                 text-decoration: none;
                 border-radius: 5px;
-                font-size: 16px;
+                font-size: 16px
                 font-weight: bold;
                 margin-top: 20px;
             }

@@ -2,17 +2,18 @@
 const User = require('../models/User');
 const OTP = require('../models/OTP');
 const otpGenerator = require('otp-generator');
-const{passwordUpdated} =  require("../mail/tempaltes/password")
-const dicebear = require('dicebear');
+const passwordUpdateTemplate= require('../mail/templates/passwordUpdate');
+const Profile = require('../models/Profile');
+// const dicebear = require('dicebear');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Profile = require('../models/Profile')
+// const Profile = require('../models/Profile')
 const mailSender = require("../utils/mailSender");
 require('dotenv').config();
 
 
 // signup handler function
-exports.singUp  = async(req,res) =>{
+exports.signup = async(req,res) =>{
     try {
         // data fetch
         const {
@@ -27,7 +28,8 @@ exports.singUp  = async(req,res) =>{
     } = req.body;
     
     //data validation
-    if(!firstName || !lastName || !email || !password || !confirmPassword || !otp || !phoneNumber ) {
+    if(!firstName || !lastName || !email || !password || !confirmPassword || !otp || !contactNumber )
+ {
         return res.status(400).json({
             success: false,
             message: 'Please fill all the fields'
@@ -47,6 +49,7 @@ exports.singUp  = async(req,res) =>{
         return res.status(400).json({
             success: false,
             message: 'User already exists'
+
         });
     }
     //find most recent OTP
@@ -85,7 +88,7 @@ exports.singUp  = async(req,res) =>{
         image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
     }
     
-
+    const user = await User.create(userPayload);
     //return response
     return res.status(201).json({
         success: true,
@@ -170,7 +173,7 @@ exports.login = async (req,res)=>{
 
 
 // send OTP handler function
-exports.send.OTP = async (req , res) =>{
+exports.sendOTP = async (req , res) =>{
     try {
         //fetch the email from ther request body
 
@@ -227,7 +230,7 @@ exports.changePassword = async (req, res)=>{
  const {oldPassword,newPassword,confirmPassword} = req.body;
  // validate data
 const isPaswordMatch = await bcrypt.compare(oldPassword,userDetails.password);
-if(!isPasswordMatch){
+if(!isPaswordMatch){
     //if old password do not match, return a 401 (Unauthorize)
     return res.status(401).json({
         success:false,
@@ -236,7 +239,7 @@ if(!isPasswordMatch){
     
 }
 //Match new password and confirm password
- if(newPassword !== confirmNewPassword){
+ if(newPassword !== confirmPassword){
     //If new pass word and confirm password do not match, return a 400 (bad request) error
     return res.status(400).json({
         success:false,
@@ -255,7 +258,7 @@ if(!isPasswordMatch){
 try{
 const emailResponse = await mailSender(
     updatedUserDetails.email,
-    passwordUpdated(
+    passwordUpdateTemplate(
         updatedUserDetails.email,
         `Password updated succesfully for${updatedUserDetails.firstName}`,
     )
