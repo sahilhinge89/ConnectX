@@ -1,0 +1,17 @@
+{
+  "name": "connectx",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "name": "connectx",
+  "version": "1.0.0",
+    "dev": "concurrently -n \"frontend,backend\" --prefix-colors \"blue,yellow\" \"npm run dev --prefix frontend\" \"npm run dev --prefix server\""
+  },
+  "devDependencies": {
+    "concurrently": "9.2.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
