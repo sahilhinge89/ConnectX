@@ -1,10 +1,8 @@
 {
+
   "name": "connectx",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-  "name": "connectx",
-  "version": "1.0.0",
     "dev": "concurrently -n \"frontend,backend\" --prefix-colors \"blue,yellow\" \"npm run dev --prefix frontend\" \"npm run dev --prefix server\""
   },
   "devDependencies": {
@@ -13,5 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-router-dom": "^7.8.2"
+  }
 }
