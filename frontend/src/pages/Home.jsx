@@ -49,54 +49,127 @@ const Home = () => {
      </div>
 
     {/* Code Section 1*/}
-     <div>
-      <CodeBlocks
-       position ={"lg:flex-row"}
-       heading={
-        <div className='text-4xl font-semibold'>
-          Unlock your 
-          <HighlightText text={"coding potential"}/>
-          with our online courses
-        </div>
-       }
-       subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."}
+         {/* Code Section 1 */}
+        <div>
+            <CodeBlocks 
+                position={"lg:flex-row"}
+                heading={
+                    <div className='text-4xl font-semibold'>
+                        Unlock Your
+                        <HighlightText text={"coding potential "}/>
+                        with our online courses
+                    </div>
+                }
+                subheading = {
+                    "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
+                }
+                actionbtn1={
+                    {
+                        btnText: "try it yourself",
+                        linkto: "/signup",
+                        active: true,
+                    }
+                }
+                 actionbtn2={
+                    {
+                        btnText: "learn more",
+                        linkto: "/login",
+                        active: false,
+                    }
+                }
 
-       actionbtn1={
-        {
-          btnText:"Try it Yourself",
-          linkto: "/signup",
-          active:true,
-        }
-       }
+                codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
+                codeColor={"text-yellow-25"}
+            />
+        </div>
+
+
+    {/* Code Section 2*/}
+    <div>
+            <CodeBlocks 
+                position={"lg:flex-row"}
+                heading={
+                    <div className='text-4xl font-semibold'>
+                        Unlock Your
+                        <HighlightText text={"coding potential "}/>
+                        with our online courses
+                    </div>
+                }
+                subheading = {
+                    "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
+                }
+                actionbtn1={
+                    {
+                        btnText: "try it yourself",
+                        linkto: "/signup",
+                        active: true,
+                    }
+                }
+                 actionbtn2={
+                    {
+                        btnText: "learn more",
+                        linkto: "/login",
+                        active: false,
+                    }
+                }
+
+                codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
+                codeColor={"text-yellow-25"}
+            />
+        </div>
+
       
-       actionbtn2={
-        {
-          btnText:"Learn More",
-          linkto: "/login",
-          active:false,
-        }
-       }
-       codeblock={`
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Example</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1><a href="/">Header</a></h1>
-  <nav>
-    <a href="one/">One</a>
-    <a href="two/">Two</a>
-    <a href="three/">Three</a>
-  </nav>
-</body>
-</html>
-`}
-/>
-     </div>
-     </div>
+ </div>
+     
+     
      {/*Section 2 */} 
+     
+     <div className='bg-pure-greys-5 text-richblack-700'>
+      <div className ='homepage_bg h-[310px]'>
+        <div className='max-w-11/12 max-w-maxContent flex flex-row items-center justify-center gap-5 max-auto'>
+              
+             <div className='h-[350px]'></div>
+              <div className='flex  flex-row gap-7 text-white'>
+                <ActionButton active={true} linkto={"/signup"}>
+                <div className='flex gap-3 items-center'>
+                  Explore Full Catalog
+                <FaArrowRight/>
+                </div>
+                </ActionButton>
+              </div>
+              
+              <ActionButton active={false} linkto={"/signup"}>
+              <div className='flex items-center text-white'>
+                Learn more
+              </div>
+              </ActionButton>
+
+        </div>
+      </div>
+      
+         <div className= 'max-w-11/12 max-w-maxContent flex flex-row items-center justify-center gap-7 max-auto'>
+         <div className='flex flex-row gap-5 ml-[350px] mt-12'>
+          <div className='text-4xl font-semibold w-[45%] '>
+           Get the skills you need for a 
+           <HighlightText text={"job that is in demand."}/>
+          </div>
+
+          <div className='flex flex-col gap-10 w-[40%] item-start'>
+           <div className='text-[16px]'>The modern ConnectX is the dictates its own terms. 
+            Today, to be a competitive specialist requires more than professional skills.</div>
+          </div>
+          
+          <ActionButton active={true} linkto={'/signup'}>
+          <div >
+                Learn more
+          </div>
+            </ActionButton>
+         </div>
+         </div>
+          
+      
+     </div>
+     
      {/*Section 3 */} 
      {/*Footer */} 
     </div>
