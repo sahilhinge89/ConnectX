@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import HighlightText from '../components/core/HomePage/HighlightText';
 import ActionButton from '../components/core/HomePage/Button';
 import Banner from '../assets/Images/banner.mp4';
+import CodeBlocks from '../components/core/HomePage/CodeBlocks';
 const Home = () => {
   return (
     <div>
@@ -45,6 +46,54 @@ const Home = () => {
       <video muted loop autoPlay >
            <source src ={Banner} type ="video/mp4"/>
       </video>
+     </div>
+
+    {/* Code Section 1*/}
+     <div>
+      <CodeBlocks
+       position ={"lg:flex-row"}
+       heading={
+        <div className='text-4xl font-semibold'>
+          Unlock your 
+          <HighlightText text={"coding potential"}/>
+          with our online courses
+        </div>
+       }
+       subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."}
+
+       actionbtn1={
+        {
+          btnText:"Try it Yourself",
+          linkto: "/signup",
+          active:true,
+        }
+       }
+      
+       actionbtn2={
+        {
+          btnText:"Learn More",
+          linkto: "/login",
+          active:false,
+        }
+       }
+       codeblock={`
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1><a href="/">Header</a></h1>
+  <nav>
+    <a href="one/">One</a>
+    <a href="two/">Two</a>
+    <a href="three/">Three</a>
+  </nav>
+</body>
+</html>
+`}
+/>
      </div>
      </div>
      {/*Section 2 */} 
