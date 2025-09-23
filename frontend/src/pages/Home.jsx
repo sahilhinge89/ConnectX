@@ -7,7 +7,7 @@ import Banner from "../assets/Images/banner.mp4";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import TimelineSection from "../components/core/HomePage/TimelineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
-
+import InstructorSection from "../components/core/HomePage/InstructorSection";
 
 
 const Home = () => {
@@ -185,7 +185,19 @@ codeblocks={`<!DOCTYPE html>
 
 
       {/*Section 3 */}
-      {/*Footer */}
+
+       {/*Instructor section is here*/}
+      <div className="w-11/12 mx-auto max-w-maxContent flex-col
+       
+       item-center justify-center gap-8 first-letter:bg-richblack-900 text-white">
+        <InstructorSection/>
+
+        <h2 className=" text-center text-4xl font-semibold mt-10">
+          Review from other Learners
+        </h2>
+        {/*Review section is here*/}
+       </div>
+    
     </div>
   );
 };
